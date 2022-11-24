@@ -1,0 +1,21 @@
+{
+  "name": "navigator",
+  "version": "1.0.0",
+  "description": "a simple 3d mall navigator applet",
+  "private": true,
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "Montell Muturi",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.146.0",
+    "three-pathfinding": "^1.1.0"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
