@@ -12,7 +12,7 @@ There are requirements that need to be fulfilled for a complete navigation exper
     - 'layout(n)' - the mall's blueprint (walls, stairs, ramps, lifts, etc...) for each n<sup>th</sup> floor where n >= 0
     - 'navmesh' - which will be used for path-finding
     - 'floor' - a flat plane that will be used as...well...the floor
-    - '{unique_id}' - a randomized id for each store's plane
+    - 'unique_id' - a randomized string for each store plane's name
 
 ## How To Run
 
@@ -30,10 +30,12 @@ There are requirements that need to be fulfilled for a complete navigation exper
             detail: {
                 model: path_to_gltf_file,
                 images: {
-                    '{unique_id}': path_to_jpg_or_png_image
+                    unique_id: path_to_jpg_or_png_image
                 }
             }
         });
+
+    _* refer to prerequisite 2 for what unique_id is_
 
     This will trigger the listener to initialize the webpage, load the model and images and finally render the output
 
@@ -41,10 +43,13 @@ There are requirements that need to be fulfilled for a complete navigation exper
 
         new CustomEvent('navigate', {
             detail: {
-                startObjectName: '{unique_id}',
-                endObjectName: '{unique_id}',
+                startObjectName: unique_id,
+                endObjectName: unique_id,
             }
         });
+
+    _* refer to prerequisite 2 for what unique_id is_
+    
 
     This will trigger the listener to find a path between the two stores and draw a line from start to end
 
