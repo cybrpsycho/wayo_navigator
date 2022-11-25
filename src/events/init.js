@@ -31,7 +31,6 @@ export default async function init(event) {
     renderer.setPixelRatio(window.devicePixelRatio);
 
     let controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
     controls.minDistance = 20;
     controls.maxDistance = 50;
 
