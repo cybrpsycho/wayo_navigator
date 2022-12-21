@@ -9,11 +9,12 @@ import {
 } from "three";
 import { MapControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { camera, render, renderer, scene } from "../core";
-import navigate from "./navigate";
-import resize from "./resize";
+import { camera, render, renderer, scene } from "../core.js";
+import navigate from "./navigate.js";
+import resize from "./resize.js";
 
 export default async function init(event) {
+  console.log("initializing app");
   camera.position.set(20, 20, 20);
   camera.lookAt(0, 0, 0);
   {

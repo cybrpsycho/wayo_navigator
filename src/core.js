@@ -1,12 +1,12 @@
-import { PerspectiveCamera, Scene, WebGLRenderer } from 'three';
+import { PerspectiveCamera, Scene, WebGLRenderer } from "three";
 
 const scene = new Scene();
 
 const camera = new PerspectiveCamera(
-    40,
-    window.innerWidth / window.innerHeight,
-    1,
-    10000
+  40,
+  window.innerWidth / window.innerHeight,
+  1,
+  10000
 );
 
 const renderer = new WebGLRenderer({ alpha: true });

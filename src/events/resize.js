@@ -1,9 +1,9 @@
-import  { camera, render, renderer } from "../core";
+import { camera, render, renderer } from "../core.js";
 
 export default function resize(event) {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    render();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  render();
 }

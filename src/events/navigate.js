@@ -1,36 +1,36 @@
 import { Pathfinding, PathfindingHelper } from "three-pathfinding";
-import { render, scene } from "../core";
+import { render, scene } from "../core.js";
 
 export default function navigate(event) {
-    const pathfinding = new Pathfinding();
-    const helper = new PathfindingHelper();
-    const zoneId = 'level';
+  const pathfinding = new Pathfinding();
+  const helper = new PathfindingHelper();
+  const zoneId = "level";
 
-    let navmesh = scene.getObjectByName('navmesh');
+  let navmesh = scene.getObjectByName("navmesh");
 
-    pathfinding.setZoneData(zoneId, Pathfinding.createZone(navmesh.geometry));
+  pathfinding.setZoneData(zoneId, Pathfinding.createZone(navmesh.geometry));
 
-    let startPos = scene.getObjectByName(event.detail.startObjectName).position;
-    let endPos = scene.getObjectByName(event.detail.endObjectName).position;
+  let startPos = scene.getObjectByName(event.detail.startObjectName).position;
+  let endPos = scene.getObjectByName(event.detail.endObjectName).position;
 
-    let startGroupId = pathfinding.getGroup(zoneId, startPos);
-    let startNode = pathfinding.getClosestNode(startPos, zoneId, startGroupId);
+  let startGroupId = pathfinding.getGroup(zoneId, startPos);
+  let startNode = pathfinding.getClosestNode(startPos, zoneId, startGroupId);
 
-    let endGroupId = pathfinding.getGroup(zoneId, endPos);
-    let endNode = pathfinding.getClosestNode(endPos, zoneId, endGroupId);
+  let endGroupId = pathfinding.getGroup(zoneId, endPos);
+  let endNode = pathfinding.getClosestNode(endPos, zoneId, endGroupId);
 
-    let path = pathfinding.findPath(
-        startNode.centroid,
-        endNode.centroid,
-        zoneId,
-        startGroupId
-    );
+  let path = pathfinding.findPath(
+    startNode.centroid,
+    endNode.centroid,
+    zoneId,
+    startGroupId
+  );
 
-    scene.add(helper);
+  scene.add(helper);
 
-    helper.setPlayerPosition(startNode.centroid);
-    helper.setTargetPosition(endNode.centroid);
-    helper.setPath(path);
+  helper.setPlayerPosition(startNode.centroid);
+  helper.setTargetPosition(endNode.centroid);
+  helper.setPath(path);
 
-    render();
+  render();
 }

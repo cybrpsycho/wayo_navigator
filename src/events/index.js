@@ -1,5 +1,5 @@
-import init from './init';
-import navigate from './navigate';
-import resize from './resize';
+import init from "./init.js";
+import navigate from "./navigate.js";
+import resize from "./resize.js";
 
 export { init, navigate, resize };
