@@ -26,8 +26,7 @@ const defaultColor = 0x949494;
 window.addEventListener("load", () => {
   console.time("loaded in");
   initialize();
-  // render();
-  window.dispatchEvent(new CustomEvent("download", {}));
+  render();
   console.timeEnd("loaded in");
 });
 
@@ -85,8 +84,8 @@ const setupScene = () => {
   secondaryLight.position.set(20, 10, -10);
   scene.add(secondaryLight);
 
-  scene.add(new DirectionalLightHelper(primaryLight, 1));
-  scene.add(new DirectionalLightHelper(secondaryLight, 1));
+  // scene.add(new DirectionalLightHelper(primaryLight, 1));
+  // scene.add(new DirectionalLightHelper(secondaryLight, 1));
 
   let geometry = new BoxGeometry(40, 0.2, 40);
   let material = new MeshLambertMaterial({ color: 0xaeaeae });
@@ -107,8 +106,8 @@ const onResize = (event) => {
 };
 
 const onDownload = async (event) => {
-  // let model = await loadModel(event.detail.modelUrl);
-  let model = await loadModel("./sample_layout.glb");
+  let model = await loadModel(event.detail.modelUrl);
+  // let model = await loadModel("./sample_layout.glb");
   // let model = await loadModel(
   //   "https://firebasestorage.googleapis.com/v0/b/wayo-254.appspot.com/o/samples%2Fsample_layout.glb?alt=media&token=ecbf4b7b-8124-431b-bb97-319d4f5b6ad6"
   // );
