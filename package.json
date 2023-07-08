@@ -1,22 +1,27 @@
 {
-  "name": "navigator",
+  "name": "wayo_navigator",
   "version": "1.0.0",
   "description": "a simple 3d mall navigator applet",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "tsc && vite build"
   },
-  "keywords": [],
-  "author": "Montell Muturi",
-  "license": "ISC",
   "dependencies": {
-    "three": "^0.146.0",
-    "three-pathfinding": "^1.1.0"
+    "@react-three/drei": "^9.78.1",
+    "@react-three/fiber": "^8.13.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "three": "^0.154.0"
   },
   "devDependencies": {
-    "vite": "^4.0.3"
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@types/three": "^0.153.0",
+    "@vitejs/plugin-react": "^4.0.1",
+    "eslint": "^8.44.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.0"
   }
 }
