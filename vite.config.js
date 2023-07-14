@@ -1,8 +1,10 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
+  server: {
+    port: 8000,
+  },
   build: {
-    outDir: "../assets/web",
     emptyOutDir: true,
     chunkSizeWarningLimit: 600,
   },
