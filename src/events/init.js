@@ -4,10 +4,8 @@ import {
   HemisphereLight,
   Mesh,
   MeshPhongMaterial,
-  ShaderChunk,
-  TextureLoader,
 } from "three";
-import { MapControls } from "three/examples/jsm/controls/OrbitControls";
+import { MapControls } from "three/examples/jsm/controls/MapControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { camera, render, renderer, scene } from "../core.js";
 import navigate from "./navigate.js";
@@ -33,7 +31,7 @@ export default async function init(event) {
 
   let controls = new MapControls(camera, renderer.domElement);
   controls.minDistance = 20;
-  controls.maxDistance = 50;
+  controls.maxDistance = 100;
   controls.maxPolarAngle = Math.PI / 2;
 
   await loadModel(event.detail);
@@ -72,22 +70,7 @@ async function loadModel(data) {
           });
         }
       } else {
-        material = new MeshPhongMaterial({
-          color: 0x999999,
-          map: await loadStoreImage(data.images[object.name]),
-          transparent: true,
-        });
-        material.onBeforeCompile = function (shader) {
-          let custom_map_fragment = ShaderChunk.map_fragment.replace(
-            `diffuseColor *= sampledDiffuseColor;`,
-            `diffuseColor = vec4( mix( diffuse, sampledDiffuseColor.rgb, sampledDiffuseColor.a ), opacity );`
-          );
-
-          shader.fragmentShader = shader.fragmentShader.replace(
-            "#include <map_fragment>",
-            custom_map_fragment
-          );
-        };
+        material = new MeshPhongMaterial({ color: 0x999999 });
       }
 
       let mesh = new Mesh(geometry, material);
@@ -99,18 +82,4 @@ async function loadModel(data) {
       render();
     }
   });
-}
-
-async function loadStoreImage(url) {
-  if (url) {
-    let textureLoader = new TextureLoader();
-
-    let texture = await textureLoader.loadAsync(url, (xhr) =>
-      console.log((xhr.loaded / xhr.total) * 100, "% loaded")
-    );
-    texture.flipY = false;
-
-    return texture;
-  }
-  return null;
 }
